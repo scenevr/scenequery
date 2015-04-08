@@ -1,0 +1,29 @@
+{
+  "name": "scenequery",
+  "version": "0.0.5",
+  "description": "jQuery-like API for SceneVR",
+  "main": "scenequery.js",
+  "scripts": {
+    "test": "semistandard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scenevr/scenequery.git"
+  },
+  "keywords": [
+    "jquery",
+    "virtual",
+    "reality",
+    "scenevr",
+    "three.js"
+  ],
+  "author": "Ben Nolan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scenevr/scenequery/issues"
+  },
+  "homepage": "https://github.com/scenevr/scenequery",
+  "devDependencies": {
+    "semistandard": "^4.0.3"
+  }
+}
