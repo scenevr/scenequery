@@ -86,7 +86,7 @@ SceneQuery.prototype.removeClass = function (classname) {
 SceneQuery.prototype.position = function (value) {
   if (value) {
     this.forEach(function (e) {
-      e.position.copy(value);
+      e.position = value;
     });
   } else {
     return this[0] && this[0].position;
@@ -98,7 +98,7 @@ SceneQuery.prototype.position = function (value) {
 SceneQuery.prototype.rotation = function (value) {
   if (value) {
     this.forEach(function (e) {
-      e.rotation.copy(value);
+      e.rotation = value;
     });
   } else {
     return this[0] && this[0].rotation;
@@ -110,7 +110,7 @@ SceneQuery.prototype.rotation = function (value) {
 SceneQuery.prototype.scale = function (value) {
   if (value) {
     this.forEach(function (e) {
-      e.scale.copy(value);
+      e.scale = value;
     });
   } else {
     return this[0] && this[0].scale;
