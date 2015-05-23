@@ -1,4 +1,4 @@
-/* global Vector, Euler */
+/* global Vector, Euler, XMLHTTPRequest */
 
 var $;
 
@@ -177,6 +177,17 @@ SceneQuery.prototype.animate = function (properties, duration) {
 
     animate();
   });
+};
+
+SceneQuery.ajax = function (opts) {
+  var xhr = new XMLHTTPRequest();
+  xhr.onload = function () {
+    if (opts.success instanceof Function) {
+      opts.success(this.responseText);
+    }
+  };
+  xhr.open('get', opts.url, true);
+  xhr.send();
 };
 
 $ = function (el) {
