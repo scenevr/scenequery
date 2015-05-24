@@ -144,6 +144,17 @@ SceneQuery.prototype.appendTo = function (selector) {
   return this;
 };
 
+SceneQuery.prototype.append = function (el) {
+  var target = $(el);
+  target = target && target[0];
+
+  if (target) {
+    this[0].appendChild(target);
+  }
+
+  return this;
+};
+
 SceneQuery.prototype.animate = function (properties, duration) {
   this.forEach(function (el) {
     var t1 = new Date().valueOf();
@@ -179,17 +190,6 @@ SceneQuery.prototype.animate = function (properties, duration) {
   });
 };
 
-SceneQuery.ajax = function (opts) {
-  var xhr = new XMLHTTPRequest();
-  xhr.onload = function () {
-    if (opts.success instanceof Function) {
-      opts.success(this.responseText);
-    }
-  };
-  xhr.open('get', opts.url, true);
-  xhr.send();
-};
-
 $ = function (el) {
   var elements;
 
@@ -201,11 +201,22 @@ $ = function (el) {
     ];
   } else if (el instanceof SceneQuery) {
     return el;
-  } else if (el.nodeType && el.nodeType === 1) {
+  } else if (el.nodeType && (el.nodeType === 1 || el.nodeType === 4)) {
     elements = [el];
   } else {
     throw new Error('SceneQuery: not implemented');
   }
 
   return new SceneQuery(elements);
+};
+
+$.ajax = function (opts) {
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function () {
+    if (opts.success instanceof Function) {
+      opts.success(this.responseText);
+    }
+  };
+  xhr.open('get', opts.url, true);
+  xhr.send();
 };
