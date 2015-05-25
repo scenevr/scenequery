@@ -16,6 +16,10 @@ SceneQuery.findBySelector = function (selector) {
   var results = [];
   var selectors = selector.split(',');
 
+  if (selector === 'scene') {
+    return [document.scene];
+  }
+
   selectors.forEach(function (s) {
     results = results.concat(document.querySelectorAll(s.trim()));
   });
